@@ -64,6 +64,11 @@ def gitref(name, rawtext, text, lineno, inliner, options={}, content=[]):
                 coderef=coderef,
             )
 
+
+    if title.startswith("../"): # TH June 2023. Fixed this problem with the links.
+        print("TH jan 2023: Hacky sphinx-gitref reformatting links as:", title, "->", title[3:])
+        title = title[3:]
+
     # Ensure the file exists - can be a file or a dir
     filepath = project_root / filename
     ref_start = None
@@ -82,6 +87,5 @@ def gitref(name, rawtext, text, lineno, inliner, options={}, content=[]):
             target = filename
 
     ref = remote.get_url(filename=filename, line=ref_start)
-
     node = nodes.reference(rawtext, title, refuri=ref, **options)
     return [node], []
