@@ -66,7 +66,7 @@ def gitref(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
 
     if title.startswith("../"): # TH June 2023. Fixed this problem with the links.
-        print("TH jan 2023: Hacky sphinx-gitref reformatting links as:", title, "->", title[3:])
+        # print("TH jan 2023: Hacky sphinx-gitref reformatting links as:", title, "->", title[3:])
         title = title[3:]
 
     # Ensure the file exists - can be a file or a dir
